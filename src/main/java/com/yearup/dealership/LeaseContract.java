@@ -3,13 +3,11 @@ package com.yearup.dealership;
 public class LeaseContract extends Contract{
     private double expectedEndingValue;
     private double leaseFee;
-    private double monthlyPlan;
 
-    public LeaseContract(String contractDate, String customerName, String customerEmail, Vehicle vehicleSold, double totalPrice, double monthlyPayment, double expectedEndingValue, double leaseFee, double monthlyPayment1) {
+    public LeaseContract(String contractDate, String customerName, String customerEmail, Vehicle vehicleSold, double totalPrice, double monthlyPayment, double expectedEndingValue, double leaseFee) {
         super(contractDate, customerName, customerEmail, vehicleSold, totalPrice, monthlyPayment);
         this.expectedEndingValue = expectedEndingValue;
         this.leaseFee = leaseFee;
-        this.monthlyPlan = monthlyPlan;
     }
 
     public double getExpectedEndingValue() {
@@ -26,14 +24,6 @@ public class LeaseContract extends Contract{
 
     public void setLeaseFee(double leaseFee) {
         this.leaseFee = leaseFee;
-    }
-
-    public double getMonthlyPlan() {
-        return monthlyPlan;
-    }
-
-    public void setMonthlyPlan(double monthlyPayment) {
-        this.monthlyPlan = monthlyPlan;
     }
 
     @Override

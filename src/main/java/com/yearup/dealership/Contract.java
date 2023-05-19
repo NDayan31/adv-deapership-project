@@ -1,5 +1,9 @@
 package com.yearup.dealership;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public abstract class Contract {
     private String contractDate;
     private String customerName;
@@ -49,6 +53,5 @@ public abstract class Contract {
 
     public abstract double getTotalPrice();
     public abstract double getMonthlyPayment();
-
 
 }

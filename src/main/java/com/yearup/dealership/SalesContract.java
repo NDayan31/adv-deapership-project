@@ -7,15 +7,13 @@ public class SalesContract extends Contract {
     private final double recordingFee;
     private double processingFee;
     private boolean financeOption;
-    private double monthlyPlan;
 
-    public SalesContract(String contractDate, String customerName, String customerEmail, Vehicle vehicleSold, double totalPrice, double monthlyPayment, double salesTaxAmount, double recordingFee, double processingFee, boolean financeOption, double monthlyPlan) {
+    public SalesContract(String contractDate, String customerName, String customerEmail, Vehicle vehicleSold, double totalPrice, double monthlyPayment, double salesTaxAmount, double recordingFee, double processingFee, boolean financeOption) {
         super(contractDate, customerName, customerEmail, vehicleSold, totalPrice, monthlyPayment);
         this.salesTaxAmount = salesTaxAmount;
         this.recordingFee = recordingFee;
         this.processingFee = processingFee;
         this.financeOption = financeOption;
-        this.monthlyPlan = monthlyPlan;
     }
 
     public double getSalesTaxAmount() {
@@ -40,14 +38,6 @@ public class SalesContract extends Contract {
 
     public void setFinanceOption(boolean financeOption) {
         this.financeOption = financeOption;
-    }
-
-    public double getMonthlyPlan() {
-        return monthlyPlan;
-    }
-
-    public void setMonthlyPlan(double monthlyPlan) {
-        this.monthlyPlan = monthlyPlan;
     }
 
     @Override
