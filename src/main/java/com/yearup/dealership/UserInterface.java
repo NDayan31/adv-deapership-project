@@ -32,19 +32,21 @@ public class UserInterface {
         while (!exit) {
 
             System.out.println("=================================");
-            System.out.println("\t1. Search by Price");
-            System.out.println("\t2. Search by Make and Model");
-            System.out.println("\t3. Search by Year");
-            System.out.println("\t4. Search by Color");
-            System.out.println("\t5. Search by Odometer Reading");
-            System.out.println("\t6. Search by Vehicle Type");
-            System.out.println("\t7. Search All Vehicles");
-            System.out.println("\t8. Add a vehicle");
-            System.out.println("\t9. Remove Vehicle");
+            System.out.println("\t 1. Search by Price");
+            System.out.println("\t 2. Search by Make and Model");
+            System.out.println("\t 3. Search by Year");
+            System.out.println("\t 4. Search by Color");
+            System.out.println("\t 5. Search by Odometer Reading");
+            System.out.println("\t 6. Search by Vehicle Type");
+            System.out.println("\t 7. Search All Vehicles");
+            System.out.println("\t 8. Add a vehicle");
+            System.out.println("\t 9. Remove Vehicle");
+            System.out.println("\t10. Submit Sale/Lease Contract");
             System.out.println("\t99. Exit");
 
             System.out.print("Please select an option: ");
             int command = input.nextInt();
+            input.nextLine();
 
             switch (command) {
                 case 1: //Search by price
@@ -73,6 +75,9 @@ public class UserInterface {
                     break;
                 case 9: // remove a vehicle
                     processRemoveVehicleRequest();
+                    break;
+                case 10: //Enter sale/lease contract
+                    processSubmitContract();
                     break;
                 case 99: // Exit
                     System.out.println("Thank you! Goodbye.");
@@ -178,6 +183,77 @@ public class UserInterface {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         dealershipFileManager.saveDealership(dealership);
 
+    }
+    public void processSubmitContract () {
+        ContractDataManager contractDataManager = new ContractDataManager();
+        boolean exit = false;
+
+        while (!exit) {
+        System.out.print("Enter sale type: ");
+        String saleType = (input.nextLine()).toUpperCase();
+        System.out.print("Enter VIN of sold vehicle: ");
+        int vin = input.nextInt();
+        input.nextLine();
+        System.out.print("Enter contract date (yyyyMMdd): ");
+        String contractDate = input.nextLine();
+        System.out.print("Enter customer name: ");
+        String customerName= input.nextLine();
+        System.out.print("Enter customer email: ");
+        String customerEmail= input.nextLine();
+
+            switch (saleType){
+                case "SALE":
+                    for (Vehicle vehicle : dealership.getAllVehicles()){
+                        if (vehicle.getVin() == vin){
+                            System.out.print("Would you like to finance? (Y/N): ");
+                            String command = input.nextLine().toUpperCase();
+                            System.out.printf("\n%d: %d %s %s marked sold.\n",
+                                    vehicle.getVin(),vehicle.getYear(),vehicle.getMake(),vehicle.getModel());
+
+                            boolean financeOption = false;
+                            switch (command) {
+                                case "Y":
+                                    financeOption = true;
+                                   break;
+                                case "N":
+                                   break;
+                            }
+                            SalesContract salesContract = new SalesContract(contractDate,customerName,customerEmail,vehicle,financeOption);
+                            contractDataManager.saveContract(salesContract);
+
+                            dealership.removeVehicle(vehicle);
+
+                            DealershipFileManager dealershipFileManager = new DealershipFileManager();
+                            dealershipFileManager.saveDealership(dealership);
+
+                            break;
+                        }
+                    } exit = true;
+                    break;
+
+                case "LEASE":
+                    for (Vehicle vehicle : dealership.getAllVehicles()){
+                        if (vehicle.getVin() == vin){
+                            System.out.printf("%d: %d %s %s had been removed.",
+                                    vehicle.getVin(),vehicle.getYear(),vehicle.getMake(),vehicle.getModel());
+
+                            LeaseContract leaseContract = new LeaseContract(contractDate,customerName,customerEmail, vehicle);
+                            contractDataManager.saveContract(leaseContract);
+
+                            dealership.removeVehicle(vehicle);
+
+                            DealershipFileManager dealershipFileManager = new DealershipFileManager();
+                            dealershipFileManager.saveDealership(dealership);
+
+                            break;
+                        }
+                    } exit = true;
+                    break;
+                default:
+                    System.out.println("Incorrect input, please try again");
+                    break;
+            }
+        }
     }
 
 }

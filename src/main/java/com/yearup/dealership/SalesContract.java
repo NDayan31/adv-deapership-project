@@ -8,10 +8,10 @@ public class SalesContract extends Contract {
     private double processingFee;
     private boolean financeOption;
 
-    public SalesContract(String contractDate, String customerName, String customerEmail, Vehicle vehicleSold, double totalPrice, double monthlyPayment, double salesTaxAmount, double recordingFee, double processingFee, boolean financeOption) {
-        super(contractDate, customerName, customerEmail, vehicleSold, totalPrice, monthlyPayment);
-        this.salesTaxAmount = salesTaxAmount;
-        this.recordingFee = recordingFee;
+    public SalesContract(String contractDate, String customerName, String customerEmail, Vehicle vehicleSold, boolean financeOption) {
+        super(contractDate, customerName, customerEmail,vehicleSold);
+        this.salesTaxAmount = 0.05;
+        this.recordingFee = 100;
         this.processingFee = processingFee;
         this.financeOption = financeOption;
     }
@@ -25,11 +25,12 @@ public class SalesContract extends Contract {
     }
 
     public double getProcessingFee() {
+        if (getVehicleSold().getPrice() < 10000){
+            processingFee = 295;
+        } else {
+            processingFee = 495;
+        }
         return processingFee;
-    }
-
-    public void setProcessingFee(double processingFee) {
-        this.processingFee = processingFee;
     }
 
     public boolean isFinanceOption() {

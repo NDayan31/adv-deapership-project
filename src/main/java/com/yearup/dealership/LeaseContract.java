@@ -4,26 +4,18 @@ public class LeaseContract extends Contract{
     private double expectedEndingValue;
     private double leaseFee;
 
-    public LeaseContract(String contractDate, String customerName, String customerEmail, Vehicle vehicleSold, double totalPrice, double monthlyPayment, double expectedEndingValue, double leaseFee) {
-        super(contractDate, customerName, customerEmail, vehicleSold, totalPrice, monthlyPayment);
-        this.expectedEndingValue = expectedEndingValue;
-        this.leaseFee = leaseFee;
+    public LeaseContract(String contractDate, String customerName, String customerEmail, Vehicle vehicleSold) {
+        super(contractDate, customerName, customerEmail, vehicleSold);
+        this.expectedEndingValue = getVehicleSold().getPrice() * 0.5;
+        this.leaseFee = getVehicleSold().getPrice() * 0.07;
     }
 
     public double getExpectedEndingValue() {
         return expectedEndingValue;
     }
 
-    public void setExpectedEndingValue(double expectedEndingValue) {
-        this.expectedEndingValue = expectedEndingValue;
-    }
-
     public double getLeaseFee() {
         return leaseFee;
-    }
-
-    public void setLeaseFee(double leaseFee) {
-        this.leaseFee = leaseFee;
     }
 
     @Override
