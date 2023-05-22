@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec4bc52-7cb1-4a9c-b854-effaeb2cfd41" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DealershipInventory.csv" beforeDir="false" afterPath="$PROJECT_DIR$/DealershipInventory.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/contracts.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yearup/dealership/Contract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yearup/dealership/Contract.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yearup/dealership/AdminUserInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yearup/dealership/ContractDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yearup/dealership/ContractDataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yearup/dealership/LeaseContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yearup/dealership/LeaseContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yearup/dealership/SalesContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yearup/dealership/SalesContract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yearup/dealership/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yearup/dealership/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

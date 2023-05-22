@@ -32,6 +32,7 @@ public class UserInterface {
         while (!exit) {
 
             System.out.println("=================================");
+            System.out.println("\t 0. Admin Screen");
             System.out.println("\t 1. Search by Price");
             System.out.println("\t 2. Search by Make and Model");
             System.out.println("\t 3. Search by Year");
@@ -49,6 +50,16 @@ public class UserInterface {
             input.nextLine();
 
             switch (command) {
+                case 0: //Admin Login
+                    System.out.print("Enter Password: ");
+                    String password = input.nextLine();
+                    if (password.equals("Potato9")) {
+                        AdminUserInterface adminUserInterface = new AdminUserInterface();
+                        adminUserInterface.adminAccess();
+                    } else {
+                        System.out.println("Invalid login");
+                    }
+                    break;
                 case 1: //Search by price
                     processGetByPriceRequest();
                     break;
@@ -207,7 +218,7 @@ public class UserInterface {
                         if (vehicle.getVin() == vin){
                             System.out.print("Would you like to finance? (Y/N): ");
                             String command = input.nextLine().toUpperCase();
-                            System.out.printf("\n%d: %d %s %s marked sold.\n",
+                            System.out.printf("%d: %d %s %s marked sold.\n\n",
                                     vehicle.getVin(),vehicle.getYear(),vehicle.getMake(),vehicle.getModel());
 
                             boolean financeOption = false;
@@ -234,7 +245,7 @@ public class UserInterface {
                 case "LEASE":
                     for (Vehicle vehicle : dealership.getAllVehicles()){
                         if (vehicle.getVin() == vin){
-                            System.out.printf("%d: %d %s %s had been removed.",
+                            System.out.printf("%d: %d %s %s had been removed.\n\n",
                                     vehicle.getVin(),vehicle.getYear(),vehicle.getMake(),vehicle.getModel());
 
                             LeaseContract leaseContract = new LeaseContract(contractDate,customerName,customerEmail, vehicle);

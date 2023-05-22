@@ -16,6 +16,14 @@ public class SalesContract extends Contract {
         this.financeOption = financeOption;
     }
 
+    public SalesContract(String contractDate, String customerName, String customerEmail, Vehicle vehicleSold, double totalPrice, double monthlyPayment, double salesTaxAmount, double recordingFee, double processingFee, boolean financeOption) {
+        super(contractDate, customerName, customerEmail, vehicleSold, totalPrice, monthlyPayment);
+        this.salesTaxAmount = salesTaxAmount;
+        this.recordingFee = recordingFee;
+        this.processingFee = processingFee;
+        this.financeOption = financeOption;
+    }
+
     public double getSalesTaxAmount() {
         return salesTaxAmount;
     }

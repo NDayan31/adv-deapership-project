@@ -19,6 +19,15 @@ public abstract class Contract {
         this.vehicleSold = vehicleSold;
     }
 
+    public Contract(String contractDate, String customerName, String customerEmail, Vehicle vehicleSold, double totalPrice, double monthlyPayment) {
+        this.contractDate = contractDate;
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.vehicleSold = vehicleSold;
+        this.totalPrice = totalPrice;
+        this.monthlyPayment = monthlyPayment;
+    }
+
     public String getContractDate() {
         return contractDate;
     }
@@ -49,6 +58,14 @@ public abstract class Contract {
 
     public void setVehicleSold(Vehicle vehicleSold) {
         this.vehicleSold = vehicleSold;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public void setMonthlyPayment(double monthlyPayment) {
+        this.monthlyPayment = monthlyPayment;
     }
 
     public abstract double getTotalPrice();
